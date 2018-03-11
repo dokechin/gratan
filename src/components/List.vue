@@ -1,6 +1,17 @@
 <template>
-  <div>
-  <v-data-table :headers="headers" :items="getGratanList" hide-actions class="elevation-1">
+  <v-card>
+    <v-card-title>
+      Nutrition
+      <v-spacer></v-spacer>
+      <v-text-field
+        append-icon="search"
+        label="Search"
+        single-line
+        hide-details
+        v-model="search">
+      </v-text-field>
+    </v-card-title>
+    <v-data-table :headers="headers" :items="getGratanList" hide-actions :search="search" class="elevation-1">
     <template slot="items" slot-scope="props">
         <td>{{ props.item.name }}</td>
         <td>{{ props.item.shop }}</td>
@@ -13,7 +24,7 @@
         <td>No Lists</td>
     </template>
   </v-data-table>
-  </div>
+  </v-card>
 </template>
 
 <script>
@@ -24,7 +35,7 @@ export default {
   },
   data () {
     return {
-      formValid: false,
+      search: '',
       dialog: false,
       headers: [
         {
