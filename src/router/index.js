@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Play from '@/components/Play'
-import Setting from '@/components/Setting'
+import Discount from '@/components/Discount'
+import Shop from '@/components/Shop'
 import Menu from '@/components/Menu'
-import Register from '@/components/Register'
-import Entrance from '@/components/Entrance'
-import Ending from '@/components/Ending'
+import Item from '@/components/Item'
+import List from '@/components/List'
 Vue.use(Router)
 
 export default new Router({
@@ -16,29 +15,24 @@ export default new Router({
       component: Menu
     },
     {
-      path: '/setting',
-      name: 'Setting',
-      component: Setting
+      path: '/shop',
+      name: 'Shop',
+      component: Shop
     },
     {
-      path: '/play',
-      name: 'Play',
-      component: Play
+      path: '/discount',
+      name: 'discount',
+      component: Discount
     },
     {
-      path: '/register',
-      name: 'Register',
-      component: Register
+      path: '/item',
+      name: 'Item',
+      component: Item
     },
     {
-      path: '/entrance',
-      name: 'Entrance',
-      component: Entrance
-    },
-    {
-      path: '/ending',
-      name: 'Ending',
-      component: Ending
+      path: '/list',
+      name: 'List',
+      component: List
     }
   ]
 })

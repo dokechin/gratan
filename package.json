@@ -1,5 +1,5 @@
 {
-  "name": "ogura",
+  "name": "gratan",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "dokechin <ttatsumi@ra2.so-net.ne.jp>",
@@ -14,11 +14,11 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "array-shuffle": "^1.0.1",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuetify": "^0.17.6",
-    "vuex": "^3.0.1"
+    "vuetify": "^1.0.5",
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
