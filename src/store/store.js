@@ -25,7 +25,8 @@ export const store = new Vuex.Store({
       for (var item of state.items) {
         var discounts = state.discounts.filter(discount => discount.shop_id === item.shop_id)
         for (var discount of discounts) {
-          var price = item.price * (state.taxRate + 100) / 100
+          var shop = getter.getShopById(discount.shop_id)
+          var price = shop.taxIncluded ? item.price : (item.price * (state.taxRate + 100) / 100)
           price = price - price * (discount.discount1 / 100)
           price = price - price * (discount.discount2 / 100)
           price = price - price * (discount.discount3 / 100)
@@ -33,7 +34,8 @@ export const store = new Vuex.Store({
           var point2 = price * (discount.point2 / 100)
           var point3 = price * (discount.point3 / 100)
           price = price - (point1 + point2 + point3)
-          gratanList.push({name: item.name, shop: getter.getShopById(item.shop_id).name, discount: discount.name, price: item.price, amount: item.amount, gratan: (price / item.amount)})
+          var gratan = Math.floor((price / item.amount) * 10) / 10
+          gratanList.push({name: item.name, shop: getter.getShopById(item.shop_id).name, discount: discount.name, price: item.price, amount: item.amount, gratan: gratan})
         }
       }
       return gratanList
