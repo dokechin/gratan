@@ -21,7 +21,7 @@
           <td>{{ props.item.gratan }}</td>
       </template>
       <template slot="no-data">
-          <td>{{ $t('no item') }}</td>
+          <td>{{ $t('no items') }}</td>
       </template>
     </v-data-table>
   </v-container>
