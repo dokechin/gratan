@@ -1,25 +1,65 @@
 <template>
   <div class="gratan">
-    <p>昨今の日本は消費税率のアップ、社会保険料率の増加、年金の削減。非正規労働者の拡大など。家計の収入が減る傾向に全く歯止めがかかりそうにない状況となっています。
-    </p>
-    <p>このような状況下では無駄な出費を減らしていくのが、万人の抱える課題といえます。
-    </p>
-    <p>何か物を買うときには、価格を比較吟味して購入しますが、比較する指標のグラム単価はその計算が面倒です。
-    </p>
-    <p>
-    また購入する店舗が複数ある場合には記憶力も要求されます。
-    </p>
-    <p>
-    また、各小売店毎に割引やポイントが複雑に絡みあい、比較で辛くなることも多いと思います。
-    </p>
-    <p>そんな、問題を解決するのがグラム単価比較アプリ「GRATAN」です。
-    </p>
-    <p>
-    グラム単価の比較で面倒な、計算、記憶、比較を一手に引き受けてくれます。
-    </p>
-    <p>
-    このアプリを使って、あなたの中で一番安い購入方法を見つけましょう！！
-    </p>
+      <section>
+        <v-parallax pb-0 mb-0 :src="require('../assets/hero.jpeg')" height="400">
+          <v-layout
+            column
+            align-center
+            justify-center
+            class="white--text"
+          >
+            <h1 class="white--text mb-2 display-3 text-xs-center">Gratan - Unit Price Memo Tool</h1>
+          </v-layout>
+        </v-parallax>
+      </section>
+
+      <section>
+          <v-flex xs12>
+            <v-container grid-list-xl>
+              <v-layout row wrap align-center>
+                <v-flex xs12 md4>
+                  <v-card class="elevation-0 transparent">
+                    <v-card-text class="text-xs-center">
+                      <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
+                    </v-card-text>
+                    <v-card-title primary-title class="layout justify-center">
+                      <div class="headline text-xs-center">{{ $t('discount') }}</div>
+                    </v-card-title>
+                    <v-card-text>
+                    {{ $t('discount text') }}
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+                <v-flex xs12 md4>
+                  <v-card class="elevation-0 transparent">
+                    <v-card-text class="text-xs-center">
+                      <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
+                    </v-card-text>
+                    <v-card-title primary-title class="layout justify-center">
+                      <div class="headline">{{ $t('light operability' )}}</div>
+                    </v-card-title>
+                    <v-card-text>
+                    {{ $t('light operability text' )}}
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+                <v-flex xs12 md4>
+                  <v-card class="elevation-0 transparent">
+                    <v-card-text class="text-xs-center">
+                      <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
+                    </v-card-text>
+                    <v-card-title primary-title class="layout justify-center">
+                      <div class="headline text-xs-center">PWA</div>
+                    </v-card-title>
+                    <v-card-text>
+                      PWA(Progressive Web Application)形式なのでランチャー起動できます。
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-flex>
+      </section>
   </div>
 </template>
 

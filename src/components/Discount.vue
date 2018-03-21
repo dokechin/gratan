@@ -1,74 +1,88 @@
 <template>
-  <div>
-  <v-dialog v-model="dialog" max-width="500px">
-    <v-btn color="primary" dark slot="activator" class="mb-2" :disabled="this.$store.state.shops.length == 0">New Item</v-btn>
-    <v-card>
-      <v-form v-model="formValid" ref="form">
-        <v-card-title>
-          <span class="headline">{{ formTitle }}</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container grid-list-md>
-            <v-layout wrap>
-              <v-flex xs6 sm6 md6>
-                <v-text-field label="Name" :rules="nameRules" v-model="editedItem.name" required></v-text-field>
-              </v-flex>
-              <v-flex xs6 sm6 md6>
-                <v-select label="Shop" :rules="shopRules" item-text="name" item-value="id" :items="shops" v-model="editedItem.shop_id" required></v-select>
-              </v-flex>
-              <v-flex xs4 sm4 md4>
-                <v-text-field label="Discount1" :rules="discountRules" v-model="editedItem.discount1"></v-text-field>
-              </v-flex>
-              <v-flex xs4 sm4 md4>
-                <v-text-field label="Discount2" :rules="discountRules" v-model="editedItem.discount2"></v-text-field>
-              </v-flex>
-              <v-flex xs4 sm4 md4>
-                <v-text-field label="Discount3" :rules="discountRules" v-model="editedItem.discount3"></v-text-field>
-              </v-flex>
-              <v-flex xs4 sm4 md4>
-                <v-text-field label="Point1" :rules="pointRules" v-model="editedItem.point1"></v-text-field>
-              </v-flex>
-              <v-flex xs4 sm4 md4>
-                <v-text-field label="Point2" :rules="pointRules" v-model="editedItem.point2"></v-text-field>
-              </v-flex>
-              <v-flex xs4 sm4 md4>
-                <v-text-field label="Point3" :rules="pointRules" v-model="editedItem.point3"></v-text-field>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" flat @click.native="close">Cancel</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="save" :disabled="!formValid">Save</v-btn>
-        </v-card-actions>
-      </v-form>
-    </v-card>
-  </v-dialog>
-  <v-data-table :headers="headers" :items="discounts" hide-actions class="elevation-1">
-    <template slot="items" slot-scope="props">
-        <td>{{ props.item.name }}</td>
-        <td>{{ getShopById(props.item.shop_id).name }}</td>
-        <td>{{ props.item.discount1 }}</td>
-        <td>{{ props.item.discount2 }}</td>
-        <td>{{ props.item.discount3 }}</td>
-        <td>{{ props.item.point1 }}</td>
-        <td>{{ props.item.point2 }}</td>
-        <td>{{ props.item.point3 }}</td>
-        <td class="layout px-0">
-          <v-btn icon class="mx-0" @click="editItem(props.item)">
-            <v-icon color="teal">edit</v-icon>
-          </v-btn>
-          <v-btn icon class="mx-0" @click="deleteItem(props.item)">
-            <v-icon color="pink">delete</v-icon>
-          </v-btn>
-        </td>
-    </template>
-    <template slot="no-data">
-        <td>No Discounts</td>
-    </template>
-  </v-data-table>
-  </div>
+  <v-container>
+    <v-layout row wrap mb-2>
+      <v-flex xs6>
+        <v-text-field
+            append-icon="search"
+            :label="$t('search')"
+            single-line
+            hide-details
+            v-model="search">
+        </v-text-field>
+      </v-flex>
+      <v-flex xs5 />
+      <v-flex xs1>
+        <v-btn @click.stop="dialog = true" color="primary" dark slot="activator" class="mb-2" :disabled="this.$store.state.shops.length == 0">{{ $t('new item') }}</v-btn>
+      </v-flex>
+    </v-layout>
+    <v-dialog v-model="dialog" max-width="500px">
+      <v-card>
+        <v-form v-model="formValid" ref="form">
+          <v-card-title>
+            <span class="headline">{{ $t(formTitle) }}</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container grid-list-md>
+              <v-layout wrap>
+                <v-flex xs6 sm6 md6>
+                  <v-text-field :label="$t('name')" :rules="nameRules" v-model="editedItem.name" required></v-text-field>
+                </v-flex>
+                <v-flex xs6 sm6 md6>
+                  <v-select :label="$t('shop')" :rules="shopRules" item-text="name" item-value="id" :items="shops" v-model="editedItem.shop_id" required></v-select>
+                </v-flex>
+                <v-flex xs4 sm4 md4>
+                  <v-text-field :label="$t('discount1')" :rules="discountRules" v-model="editedItem.discount1"></v-text-field>
+                </v-flex>
+                <v-flex xs4 sm4 md4>
+                  <v-text-field :label="$t('discount2')" :rules="discountRules" v-model="editedItem.discount2"></v-text-field>
+                </v-flex>
+                <v-flex xs4 sm4 md4>
+                  <v-text-field :label="$t('discount3')" :rules="discountRules" v-model="editedItem.discount3"></v-text-field>
+                </v-flex>
+                <v-flex xs4 sm4 md4>
+                  <v-text-field :label="$t('point1')" :rules="pointRules" v-model="editedItem.point1"></v-text-field>
+                </v-flex>
+                <v-flex xs4 sm4 md4>
+                  <v-text-field :label="$t('point2')" :rules="pointRules" v-model="editedItem.point2"></v-text-field>
+                </v-flex>
+                <v-flex xs4 sm4 md4>
+                  <v-text-field :label="$t('point3')" :rules="pointRules" v-model="editedItem.point3"></v-text-field>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="blue darken-1" flat @click.native="close">Cancel</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="save" :disabled="!formValid">Save</v-btn>
+          </v-card-actions>
+        </v-form>
+      </v-card>
+    </v-dialog>
+    <v-data-table :rows-per-page-text="$t('row per page text')" :headers="headers" :search="search" :items="discounts" :pagination.sync="pagination" class="elevation-1">
+      <template slot="items" slot-scope="props">
+          <td>{{ props.item.name }}</td>
+          <td>{{ getShopById(props.item.shop_id).name }}</td>
+          <td>{{ props.item.discount1 }}</td>
+          <td>{{ props.item.discount2 }}</td>
+          <td>{{ props.item.discount3 }}</td>
+          <td>{{ props.item.point1 }}</td>
+          <td>{{ props.item.point2 }}</td>
+          <td>{{ props.item.point3 }}</td>
+          <td class="layout px-0">
+            <v-btn icon class="mx-0" @click="editItem(props.item)">
+              <v-icon color="teal">edit</v-icon>
+            </v-btn>
+            <v-btn icon class="mx-0" @click="deleteItem(props.item)">
+              <v-icon color="pink">delete</v-icon>
+            </v-btn>
+          </td>
+      </template>
+      <template slot="no-data">
+          <td>{{ $t('no items')}}</td>
+      </template>
+    </v-data-table>
+  </v-container>
 </template>
 
 <script>
@@ -79,40 +93,43 @@ export default {
   },
   data () {
     return {
+      pagination: {
+        sortBy: 'name'
+      },
+      search: '',
       formValid: false,
       dialog: false,
       headers: [
         {
-          text: 'Discounts',
+          text: this.$t('name'),
           align: 'left',
-          sortable: false,
           value: 'name'
         },
-        { text: 'Shop', value: 'shop.name' },
-        { text: 'Discount1', value: 'discount1' },
-        { text: 'Discount2', value: 'discount2' },
-        { text: 'Discount3', value: 'discount3' },
-        { text: 'Point1', value: 'point1' },
-        { text: 'Point2', value: 'point2' },
-        { text: 'Point3', value: 'point3' },
-        { text: 'Actions', value: 'name', sortable: false }
+        { text: this.$t('shop'), value: 'shop.name' },
+        { text: this.$t('discount1'), value: 'discount1' },
+        { text: this.$t('discount2'), value: 'discount2' },
+        { text: this.$t('discount3'), value: 'discount3' },
+        { text: this.$t('point1'), value: 'point1' },
+        { text: this.$t('point2'), value: 'point2' },
+        { text: this.$t('point3'), value: 'point3' },
+        { text: this.$t('action'), value: 'name', sortable: false }
       ],
       editedIndex: -1,
       editedItem: {name: '', shop_id: null, discount1: 0, discount2: 0, discount3: 0, point1: 0, point2: 0, point3: 0},
       defaultItem: {name: '', shop_id: null, discount1: 0, discount2: 0, discount3: 0, point1: 0, point2: 0, point3: 0},
       updateValid: true,
       nameRules: [
-        (v) => !!v || '割引名を入力してください',
-        (v) => !(v.length > 30) || '割引名は30文字以内で入力してください'
+        (v) => !!v || this.$t('message.name_empty'),
+        (v) => !(v.length > 30) || this.$t('message.name_length_over_30')
       ],
       shopRules: [
-        (v) => !!v || '店舗を選択してください'
+        (v) => !!v || this.$t('message.shop_is_empty')
       ],
       discountRules: [
-        (v) => !(v > 100 || v < 0) || '割引率は0-100で入力してください'
+        (v) => !(v > 100 || v < 0) || this.$t('discount_between_0_100')
       ],
       pointRules: [
-        (v) => !(v > 100 || v < 0) || 'ポイント率は0-100で入力してください'
+        (v) => !(v > 100 || v < 0) || this.$t('point_between_0_100')
       ]
     }
   },
@@ -150,7 +167,7 @@ export default {
       return this.$store.state.discounts
     },
     formTitle () {
-      return this.editedIndex === -1 ? '新規登録' : '更新'
+      return this.editedIndex === -1 ? 'register' : 'update'
     }
   },
   mounted () {

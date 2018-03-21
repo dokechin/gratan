@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
+    "vue-i18n": "^7.5.0",
     "vue-router": "^3.0.1",
-    "vuetify": "^1.0.5",
-    "vuex": "^3.0.1",
-    "vuex-persistedstate": "^2.4.2"
+    "vuetify": "^1.0.8",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",

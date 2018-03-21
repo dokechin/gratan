@@ -1,30 +1,30 @@
 <template>
-  <v-card>
-    <v-card-title>
-      Nutrition
-      <v-spacer></v-spacer>
-      <v-text-field
-        append-icon="search"
-        label="Search"
-        single-line
-        hide-details
-        v-model="search">
-      </v-text-field>
-    </v-card-title>
-    <v-data-table :headers="headers" :items="getGratanList" hide-actions :search="search" class="elevation-1">
-    <template slot="items" slot-scope="props">
-        <td>{{ props.item.name }}</td>
-        <td>{{ props.item.shop }}</td>
-        <td>{{ props.item.discount }}</td>
-        <td>{{ props.item.price }}</td>
-        <td>{{ props.item.amount }}</td>
-        <td>{{ props.item.gratan }}</td>
-    </template>
-    <template slot="no-data">
-        <td>No Lists</td>
-    </template>
-  </v-data-table>
-  </v-card>
+  <v-container>
+    <v-layout row wrap mb-2>
+      <v-flex xs6>
+        <v-text-field
+          append-icon="search"
+          :label="$t('search')"
+          single-line
+          hide-details
+          v-model="search">
+        </v-text-field>
+      </v-flex>
+    </v-layout>
+    <v-data-table :rows-per-page-text="$t('row per page text')" :headers="headers" :items="getGratanList" :pagination.sync="pagination" :search="search" class="elevation-1">
+      <template slot="items" slot-scope="props">
+          <td>{{ props.item.name }}</td>
+          <td>{{ props.item.shop }}</td>
+          <td>{{ props.item.discount }}</td>
+          <td>{{ props.item.price }}</td>
+          <td>{{ props.item.amount }}</td>
+          <td>{{ props.item.gratan }}</td>
+      </template>
+      <template slot="no-data">
+          <td>{{ $t('no item') }}</td>
+      </template>
+    </v-data-table>
+  </v-container>
 </template>
 
 <script>
@@ -35,20 +35,22 @@ export default {
   },
   data () {
     return {
+      pagination: {
+        sortBy: 'name'
+      },
       search: '',
       dialog: false,
       headers: [
         {
-          text: 'List',
+          text: this.$t('name'),
           align: 'left',
-          sortable: true,
           value: 'name'
         },
-        { text: 'shop', value: 'shop' },
-        { text: 'discount', value: 'price' },
-        { text: 'price', value: 'price' },
-        { text: 'amount', value: 'amount' },
-        { text: 'gratan', value: 'gratan' }
+        { text: this.$t('shop'), value: 'shop' },
+        { text: this.$t('discount'), value: 'price' },
+        { text: this.$t('price'), value: 'price' },
+        { text: this.$t('amount'), value: 'amount' },
+        { text: this.$t('gratan'), value: 'gratan' }
       ]
     }
   },
