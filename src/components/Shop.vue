@@ -35,8 +35,8 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="close">Cancel</v-btn>
-            <v-btn color="blue darken-1" flat @click.native="save" :disabled="!formValid">Save</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="close">{{ $t('cancel') }}</v-btn>
+            <v-btn color="blue darken-1" flat @click.native="save" :disabled="!formValid">{{ $t('save') }}</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
