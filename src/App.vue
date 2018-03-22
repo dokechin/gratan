@@ -9,6 +9,7 @@
         <v-btn flat to="/discount">{{ $t("discount") }}</v-btn>
         <v-btn flat to="/item">{{ $t("item") }}</v-btn>
         <v-btn flat to="/list">{{ $t("gratan") }}</v-btn>
+        <v-btn flat to="/tax">{{ $t("tax rate") }}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>

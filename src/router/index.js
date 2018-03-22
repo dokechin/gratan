@@ -5,6 +5,7 @@ import Shop from '@/components/Shop'
 import Menu from '@/components/Menu'
 import Item from '@/components/Item'
 import List from '@/components/List'
+import Tax from '@/components/Tax'
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +34,11 @@ export default new Router({
       path: '/list',
       name: 'List',
       component: List
+    },
+    {
+      path: '/tax',
+      name: 'Tax',
+      component: Tax
     }
   ]
 })

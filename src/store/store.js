@@ -26,7 +26,7 @@ export const store = new Vuex.Store({
         var discounts = state.discounts.filter(discount => discount.shop_id === item.shop_id)
         for (var discount of discounts) {
           var shop = getter.getShopById(discount.shop_id)
-          var price = shop.taxIncluded ? item.price : (item.price * (state.taxRate + 100) / 100)
+          var price = (shop.taxIncluded) ? item.price : Number(item.price) * ((100.0 + Number(state.taxRate)) / 100.0)
           price = price - price * (discount.discount1 / 100)
           price = price - price * (discount.discount2 / 100)
           price = price - price * (discount.discount3 / 100)
@@ -34,7 +34,8 @@ export const store = new Vuex.Store({
           var point2 = price * (discount.point2 / 100)
           var point3 = price * (discount.point3 / 100)
           price = price - (point1 + point2 + point3)
-          var gratan = Math.floor((price / item.amount) * 100)
+          console.log(item.amount)
+          var gratan = Math.floor((price / item.amount * 1000.0)) / 10
           gratanList.push({name: item.name, shop: getter.getShopById(item.shop_id).name, discount: discount.name, price: item.price, amount: item.amount, gratan: gratan})
         }
       }
@@ -85,6 +86,10 @@ export const store = new Vuex.Store({
     removeItem (state, item) {
       var index = state.discounts.indexOf(item)
       state.items.splice(index, 1)
+      localStorage.setItem('gratan', JSON.stringify(state))
+    },
+    updateTax (state, tax) {
+      state.taxRate = tax
       localStorage.setItem('gratan', JSON.stringify(state))
     },
     initializeStore (state) {

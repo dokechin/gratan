@@ -6,9 +6,12 @@
 		"gratan": "グラム単価",
 		"register": "新規登録",
 		"update": "更新",
+		"cancel": "キャンセル",
+		"save": "保存",
 		"pretax": "税込",
 		"name": "名前",
 		"tax": "税",
+		"tax rate": "税率",
 		"w/o tax": "税抜",
 		"price": "価格",
 		"amount": "量",
@@ -35,7 +38,9 @@
 			"discount_between_0_100": "割引率は0-100にしてください",
 			"point_between_0_100": "ポイント還元率は0-100にしてください",
 			"price_under_zero": "価格は0より大きい数字を入力してください",
-			"amount_under_zero": "量は0より大きい数字を入力してください"
+			"amount_under_zero": "量は0より大きい数字を入力してください",
+			"tax_empty": "税率を入力してください",
+			"tax_under_zero": "税率は0より大きい数字を入力してください"
 		}
 	},
 	"en": {
@@ -44,9 +49,13 @@
 		"item": "PRODUCT",
 		"gratan": "UNIT PRICE",
 		"register": "REGISTER",
+		"update": "更新",
+		"cancel": "キャンセル",
+		"save": "保存",
 		"pretax": "PRETAX",
 		"name": "NAME",
 		"tax": "TAX",
+		"tax rate": "TAX RATE",
 		"w/o tax": "W/O TAX",
 		"price": "PRICE",
 		"amount": "AMOUNT",
@@ -73,7 +82,9 @@
 			"discount_between_0_100": "Discount rate must input between 0-100",
 			"point_between_0_100": "Point rate must input between 0-100",
 			"price_under_zero": "Price must input over 0",
-			"amount_under_zero": "Amount must input over 0"
+			"amount_under_zero": "Amount must input over 0",
+			"tax_empty": "Tax rate is empty",
+			"tax_under_zero": "Tax must input over 0"
 		}
 	}
 }
