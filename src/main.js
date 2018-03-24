@@ -17,12 +17,13 @@ const language = (window.navigator.languages && window.navigator.languages[0]) |
             window.navigator.language ||
             window.navigator.userLanguage ||
             window.navigator.browserLanguage
-
 // 言語の設定
 const i18n = new VueI18n({
-  locale: language,
+  locale: language.substring(0, 2),
   messages: data
 })
+
+console.log(language)
 
 Vue.config.productionTip = false
 
