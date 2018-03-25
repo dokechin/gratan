@@ -1,15 +1,33 @@
 <template>
   <v-app light>
+    <v-navigation-drawer 
+      absolute
+      class="hidden-md-and-up"
+      v-model="sideNav">
+      <v-toolbar flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+              <v-btn flat to="/" active-class><img src="./assets/logo.png"/></v-btn>
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+      <v-list>
+        <v-list-tile v-for="item in items" :key="item.title" :to="item.to">
+          <v-list-tile-content>
+            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
     <v-toolbar app>
-      <v-toolbar-title class="mr-5">
-        <v-btn flat to="/" active-class><img src="./assets/logo.png"/></v-btn>
+      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-md-and-up" ma-0 />
+      <v-toolbar-title class="ml-0">
+        <v-btn flat to="/" active-class><img src="./assets/logo.png" width="150"/></v-btn>
       </v-toolbar-title>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat to="/shop">{{ $t("shop") }}</v-btn>
-        <v-btn flat to="/discount">{{ $t("discount") }}</v-btn>
-        <v-btn flat to="/item">{{ $t("item") }}</v-btn>
-        <v-btn flat to="/list">{{ $t("gratan") }}</v-btn>
-        <v-btn flat to="/tax">{{ $t("tax rate") }}</v-btn>
+        <v-btn v-for="item in items" :key="item.title" flat :to="item.to">{{ item.title }}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
@@ -32,7 +50,15 @@ export default {
   name: 'Gratan',
   data () {
     return {
-      title: 'Gratan'
+      title: 'Gratan',
+      sideNav: false,
+      items: [
+        {title: this.$t('shop'), to: '/shop'},
+        {title: this.$t('discount'), to: '/discount'},
+        {title: this.$t('item'), to: '/item'},
+        {title: this.$t('list'), to: '/list'},
+        {title: this.$t('tax'), to: '/tax'}
+      ]
     }
   }
 }
