@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container pa-0>
     <v-layout row wrap mb-2>
       <v-flex xs6>
         <v-text-field

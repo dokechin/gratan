@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container pt-3>
     <v-form v-model="formValid" ref="form">
       <v-text-field :label="$t('tax rate')" :rules="taxRules" v-model="tax" required></v-text-field>
       <v-btn color="blue darken-1" flat @click.native="save" :disabled="!formValid">{{ $t('save') }}</v-btn>
