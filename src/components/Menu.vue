@@ -52,7 +52,7 @@
                       <div class="headline text-xs-center">PWA</div>
                     </v-card-title>
                     <v-card-text>
-                      PWA(Progressive Web Application)形式なのでランチャー起動できます。
+                      {{ $t('pwa text')}}
                     </v-card-text>
                   </v-card>
                 </v-flex>
