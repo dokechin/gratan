@@ -1,9 +1,10 @@
 <template>
-  <v-app light>
+  <v-app light left-fixed-sidebar>
     <v-navigation-drawer 
       absolute
       class="hidden-md-and-up"
-      v-model="sideNav">
+      v-model="sideNav"
+      >
       <v-toolbar flat>
         <v-list>
           <v-list-tile>
@@ -22,11 +23,11 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar app>
-      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-md-and-up" ma-0 />
-      <v-toolbar-title class="ml-0">
-        <v-btn flat to="/" active-class><img src="./assets/logo.png" width="150"/></v-btn>
+      <v-toolbar-side-icon @click.stop="sideNav = !sideNav" class="hidden-md-and-up"/>
+      <v-toolbar-title class="ml-0 my-0">
+        <v-btn flat to="/" active-class><img src="./assets/logo.png"/></v-btn>
       </v-toolbar-title>
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items class="hidden-sm-and-down ma-0">
         <v-btn v-for="item in items" :key="item.title" flat :to="item.to">{{ item.title }}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -65,4 +66,13 @@ export default {
 </script>
 
 <style>
+  .list__tile__title > .btn, .toolbar__title > .btn{
+    display: inline-block;
+    width: 180px;
+    height: 50px;
+  }
+  .list__tile__title {
+    height: 50px;
+  }
+
 </style>
