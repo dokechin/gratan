@@ -12,7 +12,7 @@
       </v-flex>
       <v-flex xs5 />
       <v-flex xs1>
-        <v-btn @click.stop="dialog = true" color="primary" dark slot="activator" class="mb-2">{{ $t('new item') }}</v-btn>
+        <v-btn id="new" @click.stop="dialog = true" color="primary" dark slot="activator" class="mb-2">{{ $t('new item') }}</v-btn>
       </v-flex>
     </v-layout>
     <v-dialog v-model="dialog" max-width="500px">
@@ -25,18 +25,18 @@
             <v-container grid-list-md>
               <v-layout wrap>
                 <v-flex xs12 sm6 md6>
-                  <v-text-field :label="$t('name')" :rules="nameRules" v-model="editedItem.name" required></v-text-field>
+                  <v-text-field id="shop_name" :label="$t('name')" :rules="nameRules" v-model="editedItem.name" required></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md6>
-                  <v-checkbox :label="$t('pretax')" v-model="editedItem.taxIncluded"></v-checkbox>
+                  <v-checkbox id="taxIncluded" :label="$t('pretax')" v-model="editedItem.taxIncluded"></v-checkbox>
                 </v-flex>
               </v-layout>
             </v-container>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" flat @click.native="close">{{ $t('cancel') }}</v-btn>
-            <v-btn color="blue darken-1" flat @click.native="save" :disabled="!formValid">{{ $t('save') }}</v-btn>
+            <v-btn id="cancel" color="blue darken-1" flat @click.native="close">{{ $t('cancel') }}</v-btn>
+            <v-btn id="save" color="blue darken-1" flat @click.native="save" :disabled="!formValid">{{ $t('save') }}</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
