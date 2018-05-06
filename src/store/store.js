@@ -116,7 +116,7 @@ export const store = new Vuex.Store({
       // for (var discount of storage.discounts) {
       //   discount.shop = shops.get(discount.shop.id)
       // }
-      Object.assign(state, JSON.parse(localStorage.getItem('gratan')))
+        Object.assign(state, JSON.parse(localStorage.getItem('gratan')))
       }
     }
   }
