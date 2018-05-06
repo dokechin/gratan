@@ -1,4 +1,4 @@
-import { shallow } from 'avoriaz'
+import { mount } from 'avoriaz'
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 import Menu from '@/components/Menu'
@@ -16,12 +16,12 @@ const i18n = new VueI18n({
 
 describe('Menu.vue', () => {
   it('should render correct contents', () => {
-    const wrapper = shallow(Menu, {i18n})
+    const wrapper = mount(Menu, {i18n})
     expect(wrapper.text())
-      .to.contain('割引/ポイント')
+      .toContain('割引/ポイント')
     expect(wrapper.text())
-      .to.contain('軽快な操作性')
+      .toContain('軽快な操作性')
     expect(wrapper.text())
-      .to.contain('PWA')
+      .toContain('PWA')
   })
 })
