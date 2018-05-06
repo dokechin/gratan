@@ -1,7 +1,7 @@
 <template>
   <div class="gratan">
       <section>
-        <v-parallax pb-0 mb-0 :src="require('../assets/hero.jpeg')" height="400">
+        <v-parallax pb-0 mb-0 :src="require('../assets/hero.jpg')" height="400">
           <v-layout
             column
             align-center
