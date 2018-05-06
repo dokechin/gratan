@@ -25,7 +25,7 @@
             <v-container grid-list-md>
               <v-layout wrap>
                 <v-flex xs12 sm6 md6>
-                  <v-text-field id="shop_name" :label="$t('name')" :rules="nameRules" v-model="editedItem.name" required></v-text-field>
+                  <v-text-field id="shopName" :label="$t('name')" :rules="nameRules" v-model="editedItem.name" required></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md6>
                   <v-checkbox id="taxIncluded" :label="$t('pretax')" v-model="editedItem.taxIncluded"></v-checkbox>
@@ -49,7 +49,7 @@
             <v-btn icon class="mx-0" @click="editItem(props.item)">
               <v-icon color="teal">edit</v-icon>
             </v-btn>
-            <v-btn icon class="mx-0" @click="deleteItem(props.item)">
+            <v-btn icon class="mx-0" @click="deleteItem(props.item)" :disabled="shopIsReferenced(props.item.id)">
               <v-icon color="pink">delete</v-icon>
             </v-btn>
           </td>
@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'shop',
   created () {
@@ -119,6 +120,7 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['shopIsReferenced']),
     shops () {
       return this.$store.state.shops
     },

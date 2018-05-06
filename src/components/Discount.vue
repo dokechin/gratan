@@ -73,7 +73,7 @@
             <v-btn icon class="mx-0" @click="editItem(props.item)">
               <v-icon color="teal">edit</v-icon>
             </v-btn>
-            <v-btn icon class="mx-0" @click="deleteItem(props.item)">
+            <v-btn icon class="mx-0" @click="deleteItem(props.item)" :disabled="shopIsReferencedByItem(props.item.shop_id)">
               <v-icon color="pink">delete</v-icon>
             </v-btn>
           </td>
@@ -159,7 +159,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getShopById']),
+    ...mapGetters(['getShopById', 'shopIsReferencedByItem']),
     shops () {
       return this.$store.state.shops
     },

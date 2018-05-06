@@ -20,6 +20,21 @@ export const store = new Vuex.Store({
     getShopById: (state) => (id) => {
       return state.shops.find(shop => shop.id === id)
     },
+    shopIsReferencedByItem: (state) => (id) => {
+      if (state.items.find(item => item.shop_id === id)) {
+        return true
+      }
+      return false
+    },
+    shopIsReferenced: (state) => (id) => {
+      if (state.discounts.find(discount => discount.shop_id === id)) {
+        return true
+      }
+      if (state.items.find(item => item.shop_id === id)) {
+        return true
+      }
+      return false
+    },
     getGratanList: (state, getter) => {
       var gratanList = []
       for (var item of state.items) {
@@ -93,6 +108,7 @@ export const store = new Vuex.Store({
       localStorage.setItem('gratan', JSON.stringify(state))
     },
     initializeStore (state) {
+      console.log('initializeStore called')
       if (localStorage.getItem('gratan')) {
       // objectのrefrenceへ置き換える
       // var storage = JSON.parse(localStorage.getItem('gratan'))
@@ -100,7 +116,7 @@ export const store = new Vuex.Store({
       // for (var discount of storage.discounts) {
       //   discount.shop = shops.get(discount.shop.id)
       // }
-        Object.assign(state, JSON.parse(localStorage.getItem('gratan')))
+      //  Object.assign(state, JSON.parse(localStorage.getItem('gratan')))
       }
     }
   }
