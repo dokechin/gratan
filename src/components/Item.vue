@@ -28,7 +28,7 @@
                   <v-text-field :label="$t('name')" :rules="nameRules" v-model="editedItem.name" required></v-text-field>
                 </v-flex>
                 <v-flex xs12 sm6 md6>
-                  <v-select :label="$t('shop')" :rules="shopRules" item-text="name" item-value="id" :items="shops" v-model="editedItem.shop_id" single-line required bottom></v-select>
+                  <v-select :label="$t('shop')" :rules="shopRules" item-text="name" item-value="id" :items="getShops" v-model="editedItem.shop_id" single-line required bottom></v-select>
                 </v-flex>
                 <v-flex xs12 sm6 md6>
                   <v-text-field :label="$t('price')" :rules="priceRules" v-model="editedItem.price"></v-text-field>
@@ -139,7 +139,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getShopById']),
+    ...mapGetters(['getShopById', 'getShops']),
     shops () {
       return this.$store.state.shops
     },

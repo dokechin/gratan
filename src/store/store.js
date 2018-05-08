@@ -20,6 +20,9 @@ export const store = new Vuex.Store({
     getShopById: (state) => (id) => {
       return state.shops.find(shop => shop.id === id)
     },
+    getShops: (state) => {
+      return state.shops.filter(shop => state.discounts.find(discount => discount.shop_id === shop.id))
+    },
     shopIsReferencedByItem: (state) => (id) => {
       if (state.items.find(item => item.shop_id === id)) {
         return true
