@@ -51,7 +51,7 @@ export const store = new Vuex.Store({
           var point1 = price * (discount.point1 / 100)
           var point2 = price * (discount.point2 / 100)
           var point3 = price * (discount.point3 / 100)
-          price = price - (point1 + point2 + point3)
+          price = Math.floor(price - (point1 + point2 + point3) * 10) / 10
           var gratan = Math.floor((price / item.amount * 1000.0)) / 10
           gratanList.push({name: item.name, shop: getter.getShopById(item.shop_id).name, discount: discount.name, price: price, amount: item.amount, gratan: gratan})
         }
